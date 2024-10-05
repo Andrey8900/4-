@@ -1,23 +1,26 @@
-class Book {
+<?php
+
+abstract class Book {
     protected $title;
     protected $author;
-    protected $isbn;
-    protected $totalPages;
     protected $readCount = 0;
 
-    public function __construct($title, $author, $isbn, $totalPages) {
+    public function __construct($title, $author) {
         $this->title = $title;
         $this->author = $author;
-        $this->isbn = $isbn;
-        $this->totalPages = $totalPages;
     }
 
-    public function read() {
+    abstract public function getAccess();
+
+    public function incrementReadCount() {
         $this->readCount++;
-        return "You have read {$this->title}.";
     }
 
-    public function getInfo() {
-        return "{$this->title} by {$this->author}, ISBN: {$this->isbn}";
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function getAuthor() {
+        return $this->author;
     }
 }
